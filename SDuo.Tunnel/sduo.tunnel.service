@@ -1,0 +1,16 @@
+[Unit]
+Description=SDuo Tunnel Service
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/local/share/SDuo.Tunnel
+ExecStart=/usr/local/share/dotnet/dotnet /usr/local/share/SDuo.Tunnel/SDuo.Tunnel.dll
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=SDuo.Tunnel
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
